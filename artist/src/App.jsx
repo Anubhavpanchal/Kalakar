@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import ArtistAdd from './pages/ArtistAdd';
 import ArtistList from './pages/ArtistList';
 import ArtistOrders from './pages/ArtistOrders';
+import ArtistChat from './pages/ArtistChat';
 import ArtistLogin from './components/ArtistLogin';
 import ArtistSignup from './components/ArtistSignup';
 import { ToastContainer } from 'react-toastify';
@@ -51,6 +52,8 @@ const App = () => {
                 <Route path="/add" element={<ArtistAdd token={token} />} />
                 <Route path="/list" element={<ArtistList token={token} />} />
                 <Route path="/orders" element={<ArtistOrders token={token} />} />
+                <Route path="/chat" element={<ArtistChat token={token} />} />
+
               </Routes>
 
               {/* Features Section */}

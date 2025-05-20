@@ -66,6 +66,17 @@ const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick
           >
             <p>Contact</p>
           </NavLink>
+           <NavLink
+            to="/chat"
+            className={({ isActive }) =>
+              `flex flex-col items-center gap-1 hover:text-black transition duration-300 ${
+                isActive ? 'underline underline-offset-3 decoration-2 decoration-black-500' : ''
+              }`
+            }
+            onClick={() => setMenuOpen(false)}
+          >
+            <p>Chat</p>
+          </NavLink>
           {!isLoggedIn && (
             <a
               href="http://localhost:5174/add"

@@ -14,17 +14,17 @@ import artistAuth from "../middleware/artistAuth.js";
 const productRouter = express.Router();
 
 // Admin add product route (commented out, enable if needed)
-// productRouter.post(
-//   "/add",
-//   adminAuth,
-//   upload.fields([
-//     { name: "image1", maxCount: 1 },
-//     { name: "image2", maxCount: 1 },
-//     { name: "image3", maxCount: 1 },
-//     { name: "image4", maxCount: 1 },
-//   ]),
-//   addProduct
-// );
+productRouter.post(
+  "/add",
+  adminAuth,
+  upload.fields([
+    { name: "image1", maxCount: 1 },
+    { name: "image2", maxCount: 1 },
+    { name: "image3", maxCount: 1 },
+    { name: "image4", maxCount: 1 },
+  ]),
+  addProduct
+);
 
 // Artist add product route
 productRouter.post(

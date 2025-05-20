@@ -26,5 +26,7 @@ orderRouter.get("/artist/:artistId", getOrdersForArtist);
 
 orderRouter.patch('/update-status/:id', updateOrderStatus);
 
+// orderRouter.put('/update-status/:id', updateOrderStatus);
+
 
 export default orderRouter;

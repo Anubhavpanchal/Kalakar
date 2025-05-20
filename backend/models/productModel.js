@@ -9,7 +9,7 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-    artistId: { type: String, required: true }, 
+    artistId: { type: String, required: false }, // Added artistId field
 
   image: {
     type: Array, // Array to store multiple image URLs
