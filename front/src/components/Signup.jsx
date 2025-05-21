@@ -116,7 +116,7 @@ const Signup = ({ isOpen, onClose, onSwitchToLogin }) => {
           <p className="text-sm text-gray-500 text-center mt-4">
                     Signup as Artist{' '}
                         <NavLink
-                           to="http://localhost:5175/add"
+                           to="https://kalakar-seven.vercel.app/"
                            className="text-blue-500 cursor-pointer hover:underline"
                          >
                            Sign up

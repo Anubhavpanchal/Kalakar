@@ -80,7 +80,7 @@ const Login = ({ isOpen, onClose, onSwitchToSignup, onLoginSuccess }) => {
         <p className="text-sm text-gray-500 text-center mt-4">
           Login as Artist{' '}
               <NavLink
-                 to="http://localhost:5175/"
+                 to="https://kalakar-seven.vercel.app/"
                  className="text-blue-500 cursor-pointer hover:underline"
                >
                  Log in

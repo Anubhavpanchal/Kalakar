@@ -79,7 +79,7 @@ const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick
           </NavLink>
           {!isLoggedIn && (
             <a
-              href="http://localhost:5174/add"
+              href="https://kalakar-fnlw.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-1 hover:text-black transition duration-300"
