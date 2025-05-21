@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = ({ setToken }) => {
   const handleChatClick = () => {
-    window.open('http://localhost:5176/', '_blank', 'noopener,noreferrer');
+    window.open('https://kalakar-chat.onrender.com/', '_blank', 'noopener,noreferrer');
   };
 
   return (

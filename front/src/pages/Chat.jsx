@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 import BestSeller from '../components/BestSeller';
 
 const Chat = () => {
-  const chatAppUrl = 'http://localhost:5176/';
+  const chatAppUrl = 'https://kalakar-chat.onrender.com/';
 
   return (
     <div className="px-4 sm:px-8 lg:px-16 text-gray-800">

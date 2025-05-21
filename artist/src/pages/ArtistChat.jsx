@@ -2,7 +2,7 @@ import React from 'react';
 import { assets } from '../assets/assets';
 
 const ArtistChat = () => {
-  const chatAppUrl = 'http://localhost:5176/';
+  const chatAppUrl = 'https://kalakar-chat.onrender.com/';
 
   return (
     <div className=" sm:px-8 lg: text-gray-800">
