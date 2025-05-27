@@ -20,6 +20,16 @@ const ShopContextProvider = (props) => {
   // State to manage orders
   const [orders, setOrders] = useState([]);
 
+  // Loader state
+  const [loading, setLoading] = useState(true);
+
+
+  // count of cart 
+const getCartCount = () => {
+  return Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
+};
+
+
   // Sync cart items with localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -28,10 +38,9 @@ const ShopContextProvider = (props) => {
   // Fetch products from the backend
   const fetchProducts = async () => {
     try {
-      console.log("Fetching products from:", `${backendUrl}/api/product/list`);
+      setLoading(true);
       const response = await fetch(`${backendUrl}/api/product/list`);
       const data = await response.json();
-      console.log("Fetched products:", data);
       if (data.success) {
         setProducts(data.products);
       } else {
@@ -39,6 +48,8 @@ const ShopContextProvider = (props) => {
       }
     } catch (error) {
       console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,6 +87,7 @@ const ShopContextProvider = (props) => {
   // Fetch products when the component mounts
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line
   }, []);
 
   // Add product to cart
@@ -138,7 +150,9 @@ const ShopContextProvider = (props) => {
     calculateTotal,
     fetchOrders,
     saveOrder,
-    backendUrl, // <-- Make sure this is included!
+    backendUrl,
+    loading, 
+     getCartCount,
   };
 
   return (

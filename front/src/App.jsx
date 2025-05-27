@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +18,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Loader from './components/Loader'; // <-- Import Loader
+import { ShopContext } from './context/ShopContext'; // <-- Import context
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -27,7 +29,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  // ✅ Restore login state on refresh
+  const { loading } = useContext(ShopContext); // <-- Get loading from context
+
   useEffect(() => {
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
@@ -52,6 +55,7 @@ const App = () => {
 
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[0vw]">
+      {loading && <Loader />} {/* Show loader when loading */}
       <Navbar
         onLoginClick={() => setIsLoginOpen(true)}
         onSignupClick={() => setIsSignupOpen(true)}
