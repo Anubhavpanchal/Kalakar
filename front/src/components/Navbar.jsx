@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiSearch, FiUser, FiMenu, FiX, FiShoppingCart } from 'react-icons/fi';
+import { ShopContext } from '../context/ShopContext';
 
 const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const navigate = useNavigate();
+  const { getCartCount } = useContext(ShopContext);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col top-0 left-0 w-full z-50 fixed bg-white shadow-md">
       <div className="flex items-center justify-between py-4 px-4 sm:px-8">
         <NavLink
           to="/"
@@ -66,7 +68,7 @@ const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick
           >
             <p>Contact</p>
           </NavLink>
-           <NavLink
+          <NavLink
             to="/chat"
             className={({ isActive }) =>
               `flex flex-col items-center gap-1 hover:text-black transition duration-300 ${
@@ -102,10 +104,15 @@ const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick
           <NavLink
             to="/cart"
             onClick={onCartClick}
-            className="text-gray-700 hover:text-black transition duration-300"
+            className="relative text-gray-700 hover:text-black transition duration-300"
             aria-label="Cart"
           >
             <FiShoppingCart size={20} />
+            {getCartCount && getCartCount() > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+                {getCartCount()}
+              </span>
+            )}
           </NavLink>
 
           {isLoggedIn && (
