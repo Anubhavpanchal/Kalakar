@@ -11,7 +11,7 @@ const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick
 
   return (
     <div className="flex flex-col top-0 left-0 w-full z-50 fixed bg-white shadow-md">
-      <div className="flex items-center justify-between py-4 px-4 sm:px-8">
+      <div className="flex items-center justify-between py-4 px-4 sm:px-8 ">
         <NavLink
           to="/"
           className="prata-regular text-2xl font-bold text-gray-800 hover:text-black transition duration-300"
@@ -101,19 +101,21 @@ const Navbar = ({ onLoginClick, onSignupClick, isLoggedIn, onLogout, onCartClick
             <FiSearch size={20} />
           </NavLink>
 
-          <NavLink
-            to="/cart"
-            onClick={onCartClick}
-            className="relative text-gray-700 hover:text-black transition duration-300"
-            aria-label="Cart"
-          >
-            <FiShoppingCart size={20} />
-            {getCartCount && getCartCount() > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
-                {getCartCount()}
-              </span>
-            )}
-          </NavLink>
+          {isLoggedIn && (
+            <NavLink
+              to="/cart"
+              onClick={onCartClick}
+              className="relative text-gray-700 hover:text-black transition duration-300"
+              aria-label="Cart"
+            >
+              <FiShoppingCart size={20} />
+              {getCartCount && getCartCount() > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+                  {getCartCount()}
+                </span>
+              )}
+            </NavLink>
+          )}
 
           {isLoggedIn && (
             <div className="relative">
