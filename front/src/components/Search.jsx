@@ -10,7 +10,7 @@ const Search = ({ onSearch }) => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center my-4">
+    <div className="w-full flex items-center justify-center mt-20">
       <form className="flex items-center gap-2 w-full sm:w-1/2">
         <input
           type="text"

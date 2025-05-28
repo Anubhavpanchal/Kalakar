@@ -7,7 +7,7 @@ const Chat = () => {
   const chatAppUrl = 'https://kalakar-chat.onrender.com/';
 
   return (
-    <div className="px-4 sm:px-8 lg:px-16 text-gray-800">
+    <div className="px-4 sm:px-8 lg:px-16 text-gray-800 mt-13">
       {/* Chat Feature Section */}
       <div className="text-2xl text-center pt-6">
         <Title text1="CHAT" text2="FEATURE" />

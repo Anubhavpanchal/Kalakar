@@ -42,6 +42,10 @@ const PlaceOrders = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    // For phone, only allow digits and max 10 characters
+    if (name === 'phone') {
+      if (!/^\d{0,10}$/.test(value)) return;
+    }
     setDeliveryInfo({ ...deliveryInfo, [name]: value });
     setErrors({ ...errors, [name]: '' });
   };
@@ -55,7 +59,12 @@ const PlaceOrders = () => {
     if (!deliveryInfo.city) newErrors.city = 'City is required.';
     if (!deliveryInfo.state) newErrors.state = 'State is required.';
     if (!deliveryInfo.zipcode) newErrors.zipcode = 'Zip Code is required.';
-    if (!deliveryInfo.phone) newErrors.phone = 'Phone Number is required.';
+    // Phone validation: must be 10 digits and start with 7, 8, or 9
+    if (!deliveryInfo.phone) {
+      newErrors.phone = 'Phone Number is required.';
+    } else if (!/^[789]\d{9}$/.test(deliveryInfo.phone)) {
+      newErrors.phone = 'Phone must be 10 digits and start with 7, 8, or 9.';
+    }
     if (!paymentMethod) newErrors.paymentMethod = 'Please select a payment method.';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -82,7 +91,7 @@ const PlaceOrders = () => {
         name: item.name,
         price: item.price,
         quantity: item.quantity,
-        artistId: item.artistId, // <-- This will now be present!
+        artistId: item.artistId,
       })),
       total: calculateSubtotal() + shippingFee,
       deliveryInfo,
@@ -103,8 +112,11 @@ const PlaceOrders = () => {
     }
   };
 
+  // Remove number input arrows (spinners) for phone and zipcode
+  const inputNumberNoArrows = "border border-gray-300 rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none";
+
   return (
-    <div className="flex flex-col sm:flex-row justify-between gap-8 pt-10 sm:pt-14 min-h-[80vh] border-t px-4 sm:px-8 lg:px-16">
+    <div className="flex flex-col sm:flex-row justify-between gap-8 mt-10 pt-10 sm:pt-14 min-h-[80vh] border-t px-4 sm:px-8 lg:px-16">
       {/* Delivery Information */}
       <div className="flex flex-col gap-6 w-full sm:max-w-[480px] bg-white ">
         <div className="text-xl sm:text-2xl mb-4">
@@ -187,25 +199,32 @@ const PlaceOrders = () => {
         <div className="flex gap-4">
           <div className="w-full">
             <input
-              className="border border-gray-300 rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="number"
+              className={inputNumberNoArrows}
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
               placeholder="Zip Code"
               name="zipcode"
               value={deliveryInfo.zipcode}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
             {errors.zipcode && <p className="text-red-500 text-sm">{errors.zipcode}</p>}
           </div>
           <div className="w-full">
             <input
-              className="border border-gray-300 rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="number"
+              className={inputNumberNoArrows}
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
               placeholder="Phone Number"
               name="phone"
               value={deliveryInfo.phone}
               onChange={handleInputChange}
               required
+              autoComplete="off"
+              maxLength={10}
             />
             {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
           </div>

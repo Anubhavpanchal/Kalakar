@@ -40,7 +40,7 @@ const Orders = () => {
   }, [backendUrl, navigate]);
 
   return (
-    <div className="flex flex-col w-full items-start gap-4 p-4  min-h-[80vh]">
+    <div className="flex flex-col w-full items-start gap-4 p-4 mt-15  min-h-[80vh]">
       <div className="text-2xl pt-5 w-full">
         <Title text1="YOUR" text2="ORDERS" />
         <hr className="bg-gray-300 my-4" />

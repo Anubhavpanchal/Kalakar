@@ -66,7 +66,7 @@ const Collection = () => {
   return (
     <div>
       <Search onSearch={setSearchQuery} />
-      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 px-10">
+      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-13 px-10">
         <Filters
           selectedCategories={selectedCategories}
           handleCategoryChange={handleCategoryChange}

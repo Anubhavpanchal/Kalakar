@@ -30,7 +30,7 @@ const Profile = () => {
   }, [backendUrl]);
 
   return (
-    <div className="px-4 sm:px-8 lg:px-16 py-10 text-gray-800">
+    <div className="px-4 sm:px-8 lg:px-16 py-10 mt-10 text-gray-800">
       <div className="text-2xl pt-5">
         <Title text1="YOUR" text2="PROFILE" />
         <hr className="bg-gray-300 my-4" />
